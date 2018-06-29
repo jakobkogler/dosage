@@ -4,9 +4,15 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-cache: pip
+matrix:
+  include:
+    - python: 3.7
+      dist: xenial
+      sudo: true
 dist: trusty
 sudo: false
+
+cache: pip
 # command to install dependencies
 install:
   - pip install -U tox-travis setuptools codecov
@@ -27,4 +33,4 @@ deploy:
     script: .github/deploy.sh
     on:
       branch: master
-      python: 3.6
+      python: 3.7
